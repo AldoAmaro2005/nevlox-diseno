@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nevlox — Diseño y contenido para negocios</title>
+<meta name="description" content="Nevlox crea identidad visual y contenido profesional para negocios. Diseño claro, atención personalizada y entregas listas para publicar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #E9E3D6;
+    --paper-card: #FBF8F1;
+    --ink: #241B2A;
+    --ink-soft: #4A4051;
+    --mustard: #D6A23C;
+    --teal: #1B6A64;
+    --brick: #B8452C;
+    --line: rgba(36,27,42,0.14);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .prose{max-width:620px;}
+
+  /* ---------- NAV ---------- */
+  nav.wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:26px;padding-bottom:26px;
+  }
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:0.01em;}
+  .brand span{color:var(--brick);}
+  .nav-cta{
+    font-size:0.92rem;font-weight:600;
+    padding:10px 20px;border:1.5px solid var(--ink);border-radius:var(--radius);
+    text-decoration:none;
+    transition:background .18s ease, color .18s ease;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--paper-card);}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding-top:20px;padding-bottom:90px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3.4rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero .lede{
+    margin-top:22px;font-size:1.08rem;color:var(--ink-soft);max-width:480px;
+  }
+  .hero-actions{margin-top:34px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-block;background:var(--brick);color:#FBF8F1;
+    padding:14px 26px;border-radius:var(--radius);text-decoration:none;
+    font-weight:600;font-size:0.98rem;
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+  .hero-note{font-size:0.86rem;color:var(--ink-soft);}
+  .hero-note strong{color:var(--ink);}
+
+  /* Instagram-grid mockup, hecho con CSS (sin imagenes reales) */
+  .grid-mock{
+    position:relative;transform:rotate(1.2deg);
+  }
+  .phone-frame{
+    background:var(--ink);border-radius:26px;padding:14px 14px 20px;
+    box-shadow:10px 14px 0 rgba(36,27,42,0.18);
+  }
+  .phone-top{
+    display:flex;align-items:center;gap:8px;padding:4px 4px 12px;
+  }
+  .phone-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--mustard),var(--brick));}
+  .phone-handle{color:#F2EEE4;font-size:0.78rem;font-weight:600;}
+  .ig-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);
+  }
+  .ig-grid div{
+    aspect-ratio:1/1;
+    display:flex;align-items:flex-end;padding:8px;
+    font-family:'Fraunces',serif;font-size:0.72rem;font-weight:600;
+    color:#F4EFE4;
+  }
+  .ig-1{background:var(--teal);}
+  .ig-2{background:#3E2E44;}
+  .ig-3{background:var(--mustard);color:#241B2A;}
+  .ig-4{background:var(--brick);}
+  .ig-5{background:#2F5750;}
+  .ig-6{background:#C9A25B;color:#241B2A;}
+  .ig-7{background:#8A2F27;}
+  .ig-8{background:#241B2A;}
+  .ig-9{background:#D6A23C;color:#241B2A;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:86px 0;}
+  section.alt{background:var(--paper-card);}
+  .eyebrow{display:none;} /* explicitly avoiding tracked-out eyebrow labels */
+  .section-head{max-width:600px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.02rem;}
+
+  /* ---------- PROBLEMA ---------- */
+  .problem-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+  }
+  .problem-row div{border-top:2px solid var(--ink);padding-top:18px;}
+  .problem-row h3{font-size:1.08rem;font-weight:600;margin-bottom:8px;}
+  .problem-row p{color:var(--ink-soft);font-size:0.96rem;margin:0;}
+
+  /* ---------- INCLUYE (tabla simple, no cards) ---------- */
+  .includes{
+    display:grid;grid-template-columns:1fr 1fr;gap:0 60px;
+  }
+  .includes ul{list-style:none;margin:0;padding:0;}
+  .includes li{
+    display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);
+    font-size:1rem;
+  }
+  .includes li:last-child{border-bottom:none;}
+  .check{
+    flex-shrink:0;width:20px;height:20px;border-radius:50%;
+    background:var(--teal);position:relative;margin-top:2px;
+  }
+  .check::after{
+    content:'';position:absolute;left:6px;top:4px;width:5px;height:9px;
+    border-right:2px solid #F4EFE4;border-bottom:2px solid #F4EFE4;
+    transform:rotate(40deg);
+  }
+
+  /* ---------- PROCESO (numerado, es secuencia real) ---------- */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .step{border-left:2px solid var(--brick);padding-left:18px;}
+  .step .num{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--brick);display:block;margin-bottom:6px;}
+  .step h3{font-size:1.02rem;margin-bottom:6px;}
+  .step p{color:var(--ink-soft);font-size:0.92rem;margin:0;}
+
+  /* ---------- PRECIO ---------- */
+  .price-box{
+    background:var(--ink);color:#F4EFE4;border-radius:6px;
+    padding:48px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;
+  }
+  .price-box h2{color:#F4EFE4;font-size:1.9rem;}
+  .price-box p{color:#CFC6D1;margin-top:14px;max-width:440px;}
+  .price-tag{text-align:right;}
+  .price-tag .amount{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--mustard);}
+  .price-tag .per{color:#CFC6D1;font-size:0.9rem;}
+  .price-box .btn-primary{margin-top:18px;box-shadow:3px 3px 0 var(--mustard);}
+  .price-box .btn-primary:hover{box-shadow:5px 5px 0 var(--mustard);}
+  .slots{
+    margin-top:14px;font-size:0.85rem;color:var(--mustard);font-weight:600;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-top:1px solid var(--line);padding:22px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;font-weight:600;font-size:1.02rem;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';font-size:1.3rem;color:var(--brick);font-weight:400;}
+  .faq-item[open] summary::after{content:'–';}
+  .faq-item p{color:var(--ink-soft);margin-top:12px;margin-bottom:0;max-width:600px;}
+
+  /* ---------- CONTACTO ---------- */
+  .contact-box{
+    background:var(--teal);color:#F4EFE4;border-radius:6px;padding:56px;
+    text-align:left;
+  }
+  .contact-box h2{color:#F4EFE4;max-width:520px;}
+  .contact-box p{color:#DDEAE7;margin-top:14px;max-width:480px;}
+  .contact-box .btn-primary{background:var(--mustard);color:var(--ink);box-shadow:3px 3px 0 var(--ink);margin-top:26px;}
+
+  footer{padding:40px 0 60px;font-size:0.86rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;gap:44px;}
+    .grid-mock{max-width:340px;transform:rotate(0.6deg);}
+    .problem-row{grid-template-columns:1fr;gap:26px;}
+    .includes{grid-template-columns:1fr;gap:0;}
+    .process{grid-template-columns:1fr 1fr;gap:26px;}
+    .price-box{grid-template-columns:1fr;padding:32px;}
+    .price-tag{text-align:left;}
+    .contact-box{padding:36px;}
+    section{padding:60px 0;}
+  }
+  @media (max-width:520px){
+    .process{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="wrap">
+  <div class="brand">Nev<span>lox</span></div>
+  <a class="nav-cta" href="#contacto">Agendar llamada</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Tu negocio ya es bueno.<br>Que se vea así también.</h1>
+      <p class="lede">Diseñamos el contenido mensual de tu marca —posts, historias e identidad visual— para que dejes de improvisar con el celular y empieces a verte como el negocio que ya eres.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contacto">Quiero mi diseñador</a>
+        <span class="hero-note"><strong>Atención personalizada</strong> para cada negocio</span>
+      </div>
+    </div>
+    <div class="grid-mock">
+      <div class="phone-frame">
+        <div class="phone-top">
+          <div class="phone-avatar"></div>
+          <div class="phone-handle">tu.negocio</div>
+        </div>
+        <div class="ig-grid">
+          <div class="ig-1">Promo</div>
+          <div class="ig-2">Producto</div>
+          <div class="ig-3">Frase</div>
+          <div class="ig-4">Cliente</div>
+          <div class="ig-5">Detrás</div>
+          <div class="ig-6">Oferta</div>
+          <div class="ig-7">Marca</div>
+          <div class="ig-8">Nuevo</div>
+          <div class="ig-9">Evento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Lo que pasa cuando el diseño lo dejas para después</h2>
+    </div>
+    <div class="problem-row">
+      <div>
+        <h3>Publicas cuando alcanzas</h3>
+        <p>Sin un plan fijo, las redes se llenan de silencios de semanas y tu negocio se ve inactivo, aunque no lo esté.</p>
+      </div>
+      <div>
+        <h3>Tu competencia ya se ve profesional</h3>
+        <p>El negocio de al lado subió de nivel su imagen y eso, para el cliente que compara, ya es una señal de confianza.</p>
+      </div>
+      <div>
+        <h3>No tienes tiempo de aprender diseño</h3>
+        <p>Ni deberías. Tu tiempo vale más resolviendo tu negocio que peleando con una app de edición.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Qué incluye el mes</h2>
+      <p>Un plan de contenido pensado para negocios que venden en su localidad, no una plantilla genérica.</p>
+    </div>
+    <div class="includes">
+      <ul>
+        <li><span class="check"></span><span><strong>12 publicaciones</strong> diseñadas para feed, listas para programar.</span></li>
+        <li><span class="check"></span><span><strong>8 historias</strong> de apoyo (promos, recordatorios, detrás de cámaras).</span></li>
+        <li><span class="check"></span><span>Un <strong>diseñador fijo</strong> que conoce tu marca mes a mes, no un pool rotativo.</span></li>
+      </ul>
+      <ul>
+        <li><span class="check"></span><span><strong>Calendario de contenido</strong> mensual acordado contigo antes de diseñar.</span></li>
+        <li><span class="check"></span><span>Ajustes de <strong>identidad visual</strong> básica (colores, tipografía, plantillas propias).</span></li>
+        <li><span class="check"></span><span>Entrega en <strong>carpeta compartida</strong>, lista para descargar y subir.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cómo empezamos</h2>
+    </div>
+    <div class="process">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Llamada de 15 min</h3>
+        <p>Nos cuentas de tu negocio, tu marca y qué quieres lograr con tu contenido.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Propuesta de línea visual</h3>
+        <p>Te mostramos una dirección de diseño concreta antes de comprometernos con el mes.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Primer mes de diseño</h3>
+        <p>Tu diseñador produce el calendario acordado y te lo entrega por adelantado.</p>
+      </div>
+      <div class="step">
+        <span class="num">4</span>
+        <h3>Ajuste y continuidad</h3>
+        <p>Revisamos qué funcionó con tus datos reales y afinamos el mes siguiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="precio">
+  <div class="wrap">
+    <div class="price-box">
+      <div>
+        <h2>Un solo plan. Sin letras chiquitas.</h2>
+        <p>Trabajamos con un número limitado de negocios a la vez porque cada marca tiene un diseñador dedicado, no una fábrica de plantillas.</p>
+        <div class="slots">Cupo limitado para mantener entregas puntuales</div>
+      </div>
+      <div class="price-tag">
+        <div class="amount">$2,500</div>
+        <div class="per">MXN / mes</div>
+        <a class="btn-primary" href="#contacto">Reservar mi lugar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div style="max-width:720px;">
+      <details class="faq-item">
+        <summary>¿Necesito tener ya un logo o identidad de marca?</summary>
+        <p>No. Si aún no la tienes, la primera revisión incluye definir una línea visual básica (colores, tipografía, tono) antes de empezar a diseñar contenido.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Quién programa las publicaciones en mis redes?</summary>
+        <p>Te entregamos todo el material listo para subir. Si prefieres que también programemos las publicaciones, es un servicio adicional que podemos platicar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo pedir cambios si algo no me convence?</summary>
+        <p>Sí, cada entrega incluye una ronda de ajustes antes de considerarse final.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Por qué solo aceptan un número limitado de negocios?</summary>
+        <p>Porque cada marca tiene un diseñador fijo asignado, no una plantilla reciclada entre clientes. Eso solo es posible con cupo limitado.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Hablemos de tu negocio</h2>
+      <p>Agenda una llamada corta y te decimos, sin compromiso, qué línea visual le funcionaría mejor a tu marca.</p>
+      <a class="btn-primary" href="https://wa.me/522298230028?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Nevlox%20y%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20dise%C3%B1o." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Nevlox — Veracruz, México</span>
+  <span><a href="mailto:contacto@nevlox.com">contacto@nevlox.com</a> · <a href="https://wa.me/522298230028" target="_blank" rel="noopener noreferrer">+52 229 823 0028</a></span>
+</footer>
+
+</body>
+</html>
